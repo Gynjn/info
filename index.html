@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gyeongjin Kang</title>
+    <style>
+        :root {
+            --text: #222;
+            --muted: #666;
+            --link: #1a5fb4;
+            --line: #e6e6e6;
+            --bg: #fff;
+            --accent: #c0392b;
+            color-scheme: light;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 64px 20px 80px;
+        }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        header {
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+            margin-bottom: 8px;
+        }
+        .profile { width: 140px; flex-shrink: 0; text-align: center; }
+        header img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            top: 16px;
+        }
+        h1 { font-size: 30px; font-weight: 600; margin: 0 0 4px; }
+        .links > * + *::before { content: "·"; color: var(--muted); margin: 0 8px; }
+        .links .pending { color: var(--muted); }
+        .bio { margin: 10px 0 0; }
+        .contact { margin-top: 10px; }
+
+        h2 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 48px 0 16px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--line);
+        }
+        p { margin: 0 0 12px; }
+
+        .news { list-style: none; padding: 0; margin: 0; }
+        .news li { display: flex; gap: 16px; margin-bottom: 6px; font-size: 13px; }
+        .news .date { color: var(--muted); min-width: 72px; }
+        .more-news summary {
+            display: inline-block;
+            margin: 4px 0 8px;
+            font-size: 14px;
+            color: var(--muted);
+            cursor: pointer;
+            list-style: none;
+        }
+        .more-news summary::-webkit-details-marker { display: none; }
+        .more-news summary::before { content: "\25B8"; margin-right: 6px; }
+        .more-news[open] summary::before { content: "\25BE"; }
+        .more-news summary:hover { color: var(--text); }
+
+        .note { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+        .pub-tabs { display: flex; gap: 6px; margin-bottom: 20px; }
+        .pub-tabs button {
+            font: inherit;
+            font-size: 14px;
+            padding: 4px 14px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--bg);
+            color: var(--muted);
+            cursor: pointer;
+        }
+        .pub-tabs button:hover { color: var(--text); }
+        .pub-tabs button[aria-selected="true"] {
+            background: var(--text);
+            border-color: var(--text);
+            color: var(--bg);
+        }
+        #pubs[data-view="selected"] .pub:not(.selected) { display: none; }
+
+        .pub {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+        .pub .media { width: 180px; flex-shrink: 0; }
+        .pub .media video,
+        .pub .media img { width: 100%; display: block; border-radius: 4px; }
+        .pub .media .soon {
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed var(--line);
+            border-radius: 4px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+        .pub .title { font-size: 13px; font-weight: 600; line-height: 1.4; }
+        .pub .authors { color: var(--muted); font-size: 11px; line-height: 1.5; }
+        .pub .authors b { color: var(--text); font-weight: 600; }
+        .pub .venue { font-size: 12px; }
+        .pub .venue em { color: var(--accent); font-style: normal; }
+        .pub .links { font-size: 12px; }
+
+        @media (max-width: 600px) {
+            main { padding-top: 40px; }
+            header { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+            .profile { width: auto; }
+            header img { top: 0; }
+            .bio { text-align: left; }
+            .pub { flex-direction: column; gap: 10px; }
+            .pub .media { width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+<main>
+    <header>
+        <div class="profile">
+            <img src="imgs/portrait.png" alt="Gyeongjin Kang">
+        </div>
+        <div>
+            <h1>Gyeongjin Kang</h1>
+            <p class="bio">
+                I am currently a research assistant at <a href="https://www.yonsei.ac.kr/en_sc/index.do">Yonsei University</a>.
+                Previously, I was an MS student (2024.03 ~ 2026.02) at <a href="https://www.skku.edu/eng/">Sungkyunkwan University</a>.
+                I have broad interests in Computer Vision.
+                My current focus is on (1) self-supervised geometric perception, (2) multimodal representation learning for spatial understanding,
+                and (3) scalable perception from continuous streams for embodied and real-world applications.
+            </p>
+            <div class="links contact">
+                <a href="https://scholar.google.com/citations?user=iyQ16vIAAAAJ&hl=en">Google Scholar</a><a href="https://github.com/Gynjn">GitHub</a><a href="mailto:ggggjin99@gmail.com">Email</a>
+            </div>
+            <!-- <p>I'm currently looking for <b>open PhD positions</b>. Please feel free to contact me if you are interested in my profile.</p> -->
+        </div>
+    </header>
+
+    <section>
+        <h2>News</h2>
+        <ul class="news">
+            <li><span class="date">Sep 2026</span><span>Two papers accepted to <a href="https://neurips.cc/">NeurIPS 2026</a>.</span></li>
+            <li><span class="date">Feb 2026</span><span>Three papers accepted to <a href="https://cvpr.thecvf.com/">CVPR 2026</a>.</span></li>
+        </ul>
+        <details class="more-news">
+            <summary>Show older news</summary>
+            <ul class="news">
+                <li><span class="date">Feb 2025</span><span>Two papers accepted to <a href="https://cvpr.thecvf.com/">CVPR 2025</a>.</span></li>
+                <li><span class="date">Dec 2024</span><span><a href="https://gynjn.github.io/CodecNeRF/">CodecNeRF</a> accepted to <a href="https://aaai.org/conference/aaai/aaai-25/">AAAI 2025</a>.</span></li>
+            </ul>
+        </details>
+    </section>
+
+    <section id="pubs" data-view="selected">
+        <h2>Publications</h2>
+        <div class="pub-tabs" role="tablist">
+            <button role="tab" data-view="selected" aria-selected="true">Selected</button>
+            <button role="tab" data-view="all" aria-selected="false">All</button>
+        </div>
+        <p class="note">* equal contribution or advising &nbsp;·&nbsp; &dagger; corresponding author</p>
+
+        <div class="pub">
+            <div class="media"><div class="soon">Coming soon</div></div>
+            <div>
+                <div class="title">3D Consistency Tokens</div>
+                <div class="authors">Seungtae Nam*, Jungwoo Kim*, <b>Gyeongjin Kang</b>, Younggeun Lee, Seungkwon Yang, Eunbyung Park&dagger;</div>
+                <div class="venue">NeurIPS 2026</div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="media"><div class="soon">Coming soon</div></div>
+            <div>
+                <div class="title">U-MVP: Encode Locally, Decode Globally for Feed-Forward 3D Gaussian Splatting</div>
+                <div class="authors">Seungkwon Yang*, <b>Gyeongjin Kang*</b>, Hwasik Jeong, Byeongjin Kang, Hyeongbhin Cho, Eunbyung Park&dagger;</div>
+                <div class="venue">NeurIPS 2026</div>
+            </div>
+        </div>
+
+        <div class="pub selected">
+            <div class="media"><video src="imgs/rethinking-asymmetry.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">Rethinking Asymmetry in Self-Supervised 3D Geometry Learning</div>
+                <div class="authors"><b>Gyeongjin Kang</b>, Freeman Cheng, Botao Ye, Weijie Lyu, Ming-Hsuan Yang&dagger;, Eunbyung Park&dagger;</div>
+                <div class="venue">arXiv 2026</div>
+                <div class="links"><a href="https://gynjn.github.io/rethinking-asymmetry/">Project</a><span class="pending">Paper (coming soon)</span><a href="https://github.com/Gynjn/rethinking-asymmetry">Code</a></div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="media"><video src="imgs/finesplat.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">FineSplat: Fine Patches, Local Groups, Detailed Splats</div>
+                <div class="authors">Hyebin Kim*, Hwasik Jeong*, Joonhyuk Park, <b>Gyeongjin Kang</b>, Jungwoo Kim, Younghyun Kim, Eunbyung Park&dagger;</div>
+                <div class="venue">arXiv 2026</div>
+                <div class="links"><a href="https://hyebinny.github.io/FineSplat/">Project</a><a href="https://arxiv.org/abs/2610.25011">Paper</a><a href="https://github.com/hyebinny/FineSplat">Code</a></div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="media"><video src="imgs/2X_teaser.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">2Xplat: Two Experts Are Better Than One Generalist</div>
+                <div class="authors">Hwasik Jeong*, Seungryong Lee*, <b>Gyeongjin Kang</b>, Seungkwon Yang, Xiangyu Sun, Seungtae Nam, Eunbyung Park&dagger;</div>
+                <div class="venue">arXiv 2026</div>
+                <div class="links"><a href="https://hwasikjeong.github.io/2Xplat/">Project</a><a href="https://arxiv.org/abs/2603.21064v2">Paper</a><a href="https://github.com/HwasikJeong/2Xplat">Code</a></div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="media"><video src="imgs/OMGSLAM.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">OpenMonoGS-SLAM: Monocular Gaussian Splatting SLAM with Open-set Semantics</div>
+                <div class="authors">Jisang Yoo, <b>Gyeongjin Kang</b>, Hyunkyu Ko, Eunbyung Park&dagger;</div>
+                <div class="venue">arXiv 2025</div>
+                <div class="links"><a href="https://jisang1528.github.io/OpenMonoGS-SLAM/">Project</a><a href="https://arxiv.org/abs/2512.08625">Paper</a></div>
+            </div>
+        </div>
+
+        <div class="pub selected">
+            <div class="media"><video src="imgs/mvpc.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">Multi-view Pyramid Transformer: Look Coarser to See Broader</div>
+                <div class="authors"><b>Gyeongjin Kang*</b>, Seungkwon Yang*, Seungtae Nam, Younggeun Lee, Jungwoo Kim, Eunbyung Park&dagger;</div>
+                <div class="venue">CVPR 2026</div>
+                <div class="links"><a href="https://gynjn.github.io/MVP/">Project</a><a href="https://arxiv.org/abs/2512.07806">Paper</a><a href="https://github.com/Gynjn/MVP">Code</a></div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="media"><video src="imgs/uni3r.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">Uni3R: Unified 3D Reconstruction and Semantic Understanding via Generalizable Gaussian Splatting from Unposed Multi-View Images</div>
+                <div class="authors">Xiangyu Sun*, Haoyi Jiang*, Liu Liu, Seungtae Nam, <b>Gyeongjin Kang</b>, Xinjie Wang, Wei Sui, Zhizhong Su, Wenyu Liu, Xinggang Wang, Eunbyung Park&dagger;</div>
+                <div class="venue">CVPR 2026 <em>(Highlight)</em></div>
+                <div class="links"><a href="https://xiangyu1sun.github.io/Uni3R/">Project</a><a href="https://arxiv.org/abs/2508.03643">Paper</a><a href="https://github.com/HorizonRobotics/Uni3R">Code</a></div>
+            </div>
+        </div>
+
+        <div class="pub selected">
+            <div class="media"><video src="imgs/tiger_c.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">iLRM: An Iterative Large 3D Reconstruction Model</div>
+                <div class="authors"><b>Gyeongjin Kang</b>, Seungtae Nam, Xiangyu Sun, Semah Khamis, Abdelrahman Mohamed, Eunbyung Park&dagger;</div>
+                <div class="venue">CVPR 2026</div>
+                <div class="links"><a href="https://gynjn.github.io/iLRM/">Project</a><a href="https://arxiv.org/abs/2507.23277">Paper</a><a href="https://github.com/Gynjn/iLRM">Code</a></div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="media"><video src="imgs/gen_den.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">Generative Densification: Learning to Densify Gaussians for High-Fidelity Generalizable 3D Reconstruction</div>
+                <div class="authors">Seungtae Nam*, Xiangyu Sun*, <b>Gyeongjin Kang</b>, Younggeun Lee, Seungjun Oh, Eunbyung Park&dagger;</div>
+                <div class="venue">CVPR 2025 <em>(Highlight)</em></div>
+                <div class="links"><a href="https://stnamjef.github.io/GenerativeDensification/">Project</a><a href="https://arxiv.org/abs/2412.06234">Paper</a><a href="https://github.com/stnamjef/GenerativeDensification">Code</a></div>
+            </div>
+        </div>
+
+        <div class="pub selected">
+            <div class="media"><video src="imgs/selfsplat.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">SelfSplat: Pose-Free and 3D Prior-Free Generalizable 3D Gaussian Splatting</div>
+                <div class="authors"><b>Gyeongjin Kang*</b>, Jisang Yoo*, Jihyeon Park, Seungtae Nam, Hyeonsoo Im, Sangheon Shin, Sangpil Kim, Eunbyung Park&dagger;</div>
+                <div class="venue">CVPR 2025</div>
+                <div class="links"><a href="https://gynjn.github.io/selfsplat/">Project</a><a href="https://arxiv.org/abs/2411.17190">Paper</a><a href="https://github.com/Gynjn/selfsplat">Code</a></div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="media"><video src="imgs/codecnerf.mp4" autoplay loop muted playsinline></video></div>
+            <div>
+                <div class="title">CodecNeRF: Toward Fast Encoding and Decoding, Compact, and High-quality Novel-view Synthesis</div>
+                <div class="authors"><b>Gyeongjin Kang*</b>, Younggeun Lee*, Seungjun Oh, Eunbyung Park&dagger;</div>
+                <div class="venue">AAAI 2025</div>
+                <div class="links"><a href="https://gynjn.github.io/CodecNeRF/">Project</a><a href="https://arxiv.org/abs/2404.04913">Paper</a><a href="https://github.com/Gynjn/CodecNeRF">Code</a></div>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    document.querySelectorAll('.pub-tabs button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.getElementById('pubs').dataset.view = btn.dataset.view;
+            document.querySelectorAll('.pub-tabs button').forEach(function (b) {
+                b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+            });
+        });
+    });
+</script>
+</body>
+</html>
